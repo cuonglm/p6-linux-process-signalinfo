@@ -6,7 +6,7 @@
   "authors" : [ "Cuong Manh Le <cuong.manhle@gmail.com>" ],
   "author" : "Cuong Manh Le <cuong.manhle@gmail.com>",
   "auth" : "github:Gnouc",
-  "version" : "v0.0.1",
+  "version" : "v0.0.2",
   "build-depends" : [ "panda" ],
   "test-depends" : [ "Test" ],
   "depends" : [ ],

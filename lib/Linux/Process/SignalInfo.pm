@@ -6,11 +6,12 @@ constant %SIGNAL_ACTION = {
     SigCgt => 'Catched',
 };
 
-class Linux::Process::SignalInfo:ver<v0.0.1>:auth<github:Gnouc> {
+class Linux::Process::SignalInfo:ver<v0.0.2>:auth<github:Gnouc> {
 
     has Int $.pid is required;
     has %!signal_info;
     has %!signal_data;
+    has Str $.error is rw = '';
 
     method !is_bit_set($mask, $n) returns Bool {
         return ($mask +& (1 +< ($n - 1))).Bool;
@@ -24,6 +25,12 @@ class Linux::Process::SignalInfo:ver<v0.0.1>:auth<github:Gnouc> {
                 %!signal_info{$type} = Int('0x' ~ $value.trim);
             }
         }
+        CATCH {
+            default {
+                $.error = .Str;
+            }
+        }
+
         return %!signal_info;
     }
 
@@ -43,6 +50,6 @@ class Linux::Process::SignalInfo:ver<v0.0.1>:auth<github:Gnouc> {
         for %!signal_data.kv -> $k, $v {
             "%SIGNAL_ACTION{$k}: $v.gist()".say;
         }
-        1;
+        return;
     }
 }

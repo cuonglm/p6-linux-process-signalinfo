@@ -14,6 +14,7 @@ ok(
     'New instance'
 );
 ok($signal_info.read, 'Reading process signal information');
+ok($signal_info.error eq '', 'No error');
 ok($signal_info.parse, 'Parsing signal information');
 
 done-testing();
