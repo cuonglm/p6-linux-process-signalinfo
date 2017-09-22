@@ -4,3 +4,6 @@ perl6:
   - latest
 
 sudo: false
+
+before_script:
+  - perl6 -e '$*DISTRO.name.say'
